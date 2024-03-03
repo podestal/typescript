@@ -125,3 +125,127 @@ let ride ={
     speed: speed ?? 30
 }
 
+// OOP
+
+class Account {
+
+    nickname?: string
+
+    constructor(
+        public readonly id: number, 
+        public owner: string, 
+        private _balance: number) {
+    }
+
+    deposit(amount: number): void {
+        if (amount <= 0) {
+            throw new Error('Invalid amount')
+        }
+        this._balance += amount
+    }
+
+    // private calculateTax() {
+
+    // }
+
+    get balance(): number {
+        return this._balance
+    }
+
+    // set balance(value: number) {
+    //     if (value < 0) {
+    //         throw new Error('Inavlid value')
+    //     }
+    //     this._balance = value
+    // }
+}
+
+let account = new Account(1, 'Luis', 0)
+account.deposit(100)
+console.log('balance', account.balance);
+console.log(account);
+
+// INDEX SIGNATURES
+
+class SeatAssignment {
+    // index signature
+    [seatNumber: string] : string
+}
+
+let seats = new SeatAssignment()
+seats.A1 = 'Luis'
+seats.A2 = 'Raul'
+
+// STATIC MEMBERS
+
+class Ride {
+    private static _activeRides: number = 0
+
+    start() { Ride._activeRides++ }
+
+    stop() { Ride._activeRides-- }
+
+    static get activeRides() {
+        return Ride._activeRides
+    }
+}
+
+let rideOne = new Ride()
+rideOne.start()
+
+let rideTwo = new Ride()
+rideTwo.start()
+
+console.log('Active rides:', Ride.activeRides)
+// console.log(rideTwo.activeRides)
+
+// INHERITANCE
+
+class Person {
+    constructor(
+        public firstName: string,
+        public lastName: string
+    ) {}
+
+    get fullName() {
+        return this.firstName + ' ' + this.lastName
+    }
+
+    walk() {
+        console.log('Walking')
+        
+    }
+}
+
+class Student extends Person {
+    constructor(
+        public studentId: number,
+        firstName: string,
+        lastName: string
+    ) {
+        super(firstName, lastName
+    )}
+
+    takeTest() {
+        console.log('Taking test');
+        
+    }
+}
+
+
+let student = new Student(1, 'Luis', 'Rodriguez')
+console.log(student.fullName);
+
+// METHOD OVERRIDING
+
+class Teacher extends Person {
+
+    override get fullName() {
+        return 'Professor ' + super.fullName
+    }
+
+}
+
+let teacher = new Teacher('Jonh', 'Smith')
+console.log(teacher.fullName)
+
