@@ -37,11 +37,13 @@ console.log('Tax calculation with year: $.', calculateTax(10_000, 2020))
 
 // OBJECTS
 
-let employee :{ 
+type Employee = {
     readonly id: number,
     name: string,
     retire: (date: Date) => void
-} = {
+}
+
+let employee: Employee = {
     id: 1, 
     name: "Luis",
     retire: (date: Date) => console.log(date)
@@ -49,6 +51,77 @@ let employee :{
 
 console.log('Employee', employee, );
 
+// UNION TYPES
 
+const kgToLbs = (weigh: number | string): number => {
+    if (typeof weigh === 'number') {
+        return weigh * 2.2
+    } else {
+        return parseInt(weigh) * 2.2
+    }
+}
 
- 
+console.log('Kg to Lbs', kgToLbs(40));
+console.log('Kg to Lbs', kgToLbs('40'));
+
+// INTERSECTION TYPES
+
+type Draggable = {
+    drag: () => void
+}
+
+type Resizable = {
+    resize: () => void
+}
+
+type UIWidget = Draggable | Resizable 
+// this is an intersection type
+
+let textBox: UIWidget = {
+    drag: () => {},
+    resize: () => {}
+}
+
+// LITERAL TYPES
+
+// literal (exact, specific)
+type Quantity = 50 | 100
+let quantity: Quantity= 50
+
+type Metric = 'cm' | 'inch'
+
+// NULLABLE TYPES
+
+const greet = (name: string | null | undefined): void  => {
+    if (name) {
+        console.log(name.toUpperCase())
+    } else {
+        console.log('Hola')
+        
+    }
+}
+
+greet(undefined)
+
+// OPTIONAL CHAINING
+
+type Customer = {
+    birthday: Date
+}
+
+const getCustomer = (id: number): Customer | null => {
+    return id === 0 ? null : { birthday: new Date() }
+}
+
+let customer = getCustomer(10)
+console.log(customer?.birthday);
+
+// NULLISH COALESCING OPERATOR
+
+let speed: number | null = null
+let ride ={
+    // the same as:
+    // speed: speed !== null ? speed : 30
+    speed: speed ?? 30
+}
+

@@ -24,4 +24,33 @@ let employee = {
     retire: (date) => console.log(date)
 };
 console.log('Employee', employee);
+const kgToLbs = (weigh) => {
+    if (typeof weigh === 'number') {
+        return weigh * 2.2;
+    }
+    else {
+        return parseInt(weigh) * 2.2;
+    }
+};
+console.log('Kg to Lbs', kgToLbs(40));
+console.log('Kg to Lbs', kgToLbs('40'));
+let textBox = {
+    drag: () => { },
+    resize: () => { }
+};
+let quantity = 50;
+const greet = (name) => {
+    if (name) {
+        console.log(name.toUpperCase());
+    }
+    else {
+        console.log('Hola');
+    }
+};
+greet(undefined);
+const getCustomer = (id) => {
+    return id === 0 ? null : { birthday: new Date() };
+};
+let customer = getCustomer(10);
+console.log(customer === null || customer === void 0 ? void 0 : customer.birthday);
 //# sourceMappingURL=index.js.map
