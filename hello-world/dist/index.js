@@ -125,4 +125,16 @@ class Teacher extends Person {
 }
 let teacher = new Teacher('Jonh', 'Smith');
 console.log(teacher.fullName);
+class KeyValuePair {
+    constructor(key, value) {
+        this.key = key;
+        this.value = value;
+    }
+}
+let pair = new KeyValuePair('1', 'a');
+const wrapInArray = (value) => {
+    return value;
+};
+console.log(wrapInArray('hola'));
+console.log(wrapInArray(1));
 //# sourceMappingURL=index.js.map

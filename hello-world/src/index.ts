@@ -249,3 +249,17 @@ class Teacher extends Person {
 let teacher = new Teacher('Jonh', 'Smith')
 console.log(teacher.fullName)
 
+// GENERICS
+
+class KeyValuePair<K, V> {
+    constructor(public key: K, public value: V) {}
+}
+
+let pair = new KeyValuePair<String, String>('1', 'a')
+
+const wrapInArray = <T>(value: T) => {
+    return value
+}
+
+console.log(wrapInArray('hola'));
+console.log(wrapInArray(1));
